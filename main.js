@@ -55,29 +55,7 @@ const isLegal = (startStack, endStack) => {
 
 // What is a win in Towers of Hanoi? When should this function run?
 const checkForWin = () => {
-    // Using a FOR LOOP to check the numbers 
-    let value = 4;
-    // set the winCheck to false to start, MATT was super helpful with this issue I had! 
-    let winCheck = false;
-  
-    // Loop through the arrays of stacks b and c
-    for (let i = 0; i < 4; i++) {
-      // Check if the piece at array[i] = value
-      if (stacks['b'][i] == value || stacks['c'][i] == value) {
-        // Decrease value to the next smaller piece
-        value -= 1;
-        // Set win state to true if the piece at array[i] keeps = to value
-        win = true;
-      } else {
-        // Set win state to false if the piece at array[i] != value
-        win = false;
-        // break out of the loop win the win state is set to fale
-        break;
-      };
-    };
-  
-    // Return true or false on winniing
-    return winCheck;
+    
 }
 
 // When is this function called? What should it do with its argument?
