@@ -76,10 +76,16 @@ const towersOfHanoi = (startStack, endStack) => {
   if(checkForWin() === true) {
     // if the checkforwin func is true, notify
     console.log("You have won Towers of Hanoi, GG ez!")
-    console.log("***********************************")
+    console.log('------------------------------------')
   };
-  // here i want to add  that if win, reset board.
-
+  // New Game 
+  console.log('Board Reset...');
+  console.log('\nStart New Game\n');
+  let stacks = {
+    a: [4, 3, 2, 1],
+    b: [],
+    c: []
+  };
 }
 
 const getPrompt = () => {
@@ -112,6 +118,15 @@ if (typeof describe === 'function') {
       };
       assert.equal(isLegal('a', 'b'), false);
     });
+    // my test
+    it('should not allow an illegal move', () => {
+      stacks = {
+        a: [4, 3],
+        b: [2],
+        c: [1]
+      };
+      assert.equal(isLegal('a', 'b'), false);
+    });
     it('should allow a legal move', () => {
       stacks = {
         a: [4, 3, 2, 1],
@@ -120,12 +135,24 @@ if (typeof describe === 'function') {
       };
       assert.equal(isLegal('a', 'c'), true);
     });
+    // my test
+    it('should allow a legal move', () => {
+      stacks = {
+        a: [4, 3, 2, 1],
+        b: [],
+        c: []
+      };
+      assert.equal(isLegal('a', 'b'), true);
   });
   describe('#checkForWin()', () => {
     it('should detect a win', () => {
       stacks = { a: [], b: [4, 3, 2, 1], c: [] };
       assert.equal(checkForWin(), true);
+      stacks = { a: [], b: [], c: [4, 3, 2, 1] }; // my test
+      assert.equal(checkForWin(), true);
       stacks = { a: [1], b: [4, 3, 2], c: [] };
+      assert.equal(checkForWin(), false);
+      stacks = { a: [], b: [1], c: [4, 3, 2] }; // my test
       assert.equal(checkForWin(), false);
     });
   });
