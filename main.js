@@ -55,7 +55,14 @@ const isLegal = (startStack, endStack) => {
 
 // What is a win in Towers of Hanoi? When should this function run?
 const checkForWin = () => {
-    
+    let winCheckC = stacks.c.toString()
+    let winCheckB = stacks.b.toString()
+    // had trouble checking so converting to strings to make comparison easier for me.
+    if(winCheckB == "4, 3, 2, 1" || winCheckC == "4, 3, 2, 1"){
+      return true;
+    } else {
+      return false;
+    }
 }
 
 // When is this function called? What should it do with its argument?
@@ -68,10 +75,10 @@ const towersOfHanoi = (startStack, endStack) => {
   // check if last move was the winning move
   if(checkForWin() === true) {
     // if the checkforwin func is true, notify
-    console.log("You have won Towers of Hanoi, GGEZ!")
+    console.log("You have won Towers of Hanoi, GG ez!")
     console.log("***********************************")
   };
-  // if win, reset board.
+  // here i want to add  that if win, reset board.
 
 }
 
