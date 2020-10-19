@@ -77,11 +77,16 @@ const towersOfHanoi = (startStack, endStack) => {
     // if the checkforwin func is true, notify
     console.log("You have won Towers of Hanoi, GG ez!")
     console.log('------------------------------------')
-  };
   // New Game 
   console.log('Board Reset...');
   console.log('\nStart New Game\n');
+    let stacks = {
+      a: [4, 3, 2, 1],
+      b: [],
+      c: []
+    };
 
+  };
 }
 
 const getPrompt = () => {
