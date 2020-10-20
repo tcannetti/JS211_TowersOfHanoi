@@ -118,6 +118,10 @@ if (typeof describe === 'function') {
         c: []
       };
       assert.equal(isLegal('a', 'b'), false);
+      stacks = { a: [4, 3], b: [2, 1], c: [] };
+      assert.equal(isLegal('a', 'b'), false);
+      stacks = { a: [4, 3], b: [1], c: [2] };
+      assert.equal(isLegal('a', 'c'), false);
     });
     it('should allow a legal move', () => {
       stacks = {
@@ -126,6 +130,12 @@ if (typeof describe === 'function') {
         c: []
       };
       assert.equal(isLegal('a', 'c'), true);
+      stacks = { a: [4, 3, 2], b: [1], c: [] };
+      assert.equal(isLegal('a', 'c'), true );
+      stacks = { a: [4, 3], b: [1], c: [2] };
+      assert.equal(isLegal('b', 'c'), true);
+      stacks = { a: [4, 3], b: [], c: [2, 1] };
+      assert.equal(isLegal('a', 'b'), true);
     });
     
   });
@@ -133,8 +143,28 @@ if (typeof describe === 'function') {
     it('should detect a win', () => {
       stacks = { a: [], b: [4, 3, 2, 1], c: [] };
       assert.equal(checkForWin(), true);
+      stacks = { a: [], b: [], c: [4, 3, 2, 1] };
+      assert.equal(checkForWin(), true);
       stacks = { a: [1], b: [4, 3, 2], c: [] };
       assert.equal(checkForWin(), false);
+    });
+  });
+  describe('movePiece()', () => {
+    it('should correctly move a piece', () => {
+      stacks = {
+        a: [4, 3, 2, 1],
+        b: [],
+        c: []
+      };
+      movePiece('a', 'b');
+      // make sure size of stack 'a' is 3
+      assert.equal(stacks.a.length, 3);
+      // make sure size of stack 'b' is 1
+      assert.equal(stacks.b.length, 1);
+      // make sure c is length 1
+      assert.equal(stacks.c.length, 0);
+      // make sure element in index 0 of 'b' is 1
+      assert.equal(stacks.b[0], 1);
     });
   });
 
