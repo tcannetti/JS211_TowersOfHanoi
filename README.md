@@ -8,5 +8,5 @@
 
 ** UNIT TESTS **
 1. I'd like to create a test that determins if the player is attempting to move a piece to the same location it's already at. 
-2. A test to 
-3. And lastly a test to 
+2. A test to check for losses
+3. And lastly a test to check that legal moves equal a win. 
